@@ -1,0 +1,94 @@
+﻿@page
+@model RazorShop.Pages.ClothingModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="~/js/Clothing.js" asp-append-version="true" async></script>
+    <link href="/css/style2.css" rel="stylesheet" asp-append-version="true">
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-page="/Index"><img class="logo" src="/lib/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-page="Index">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-page="Clothing">CLOTHING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Sneakers">SNEAKERS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-page="Shades">SHADES</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="Cart">CART(<span class="cart-quantity">0</span>)</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <img src="/lib/bobby2.jpg" class="img-fluid" id="bobby">
+
+
+    <p class="lead" id="p2"><strong><b>CLOTHING</b></strong></p>
+    <br>
+
+    <div class="card-deck">
+        @foreach (var product in Model.Products)
+        {
+            <div class="card">
+                <img src="@product.Photo" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text"><b>@product.Price $</b></p>
+                    <input type="hidden" value="@product.ID" />
+                    <form method="post">
+                        <button class="btn btn-primary" type="submit" asp-route-id="@product.ID">Buy</button>
+                    </form>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <br>
+
+    <br>
+    <br>
+
+    <div class="container-fluid" id="jumbo">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p class="lead" id="p1"><strong><b>SEMIAUTOMATIC-CLOTHING &copy | HIP OR HOP YOUR STYLE | EVOLVE </b></strong></p>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>
